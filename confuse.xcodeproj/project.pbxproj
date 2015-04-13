@@ -14,6 +14,8 @@
 		8B139FDB1ADC2E92009B4CAD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B139FDA1ADC2E92009B4CAD /* Images.xcassets */; };
 		8B139FDE1ADC2E93009B4CAD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B139FDC1ADC2E92009B4CAD /* LaunchScreen.xib */; };
 		8B139FEA1ADC2E93009B4CAD /* confuseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B139FE91ADC2E93009B4CAD /* confuseTests.m */; };
+		8B139FF61ADC2F94009B4CAD /* confuse.sh in Resources */ = {isa = PBXBuildFile; fileRef = 8B139FF51ADC2F94009B4CAD /* confuse.sh */; };
+		8B139FF81ADC2F9D009B4CAD /* func.list in Resources */ = {isa = PBXBuildFile; fileRef = 8B139FF71ADC2F9D009B4CAD /* func.list */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		8B139FE31ADC2E93009B4CAD /* confuseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = confuseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B139FE81ADC2E93009B4CAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B139FE91ADC2E93009B4CAD /* confuseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = confuseTests.m; sourceTree = "<group>"; };
+		8B139FF31ADC2EED009B4CAD /* codeObfuscation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = codeObfuscation.h; sourceTree = "<group>"; };
+		8B139FF41ADC2F1E009B4CAD /* confuse.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = confuse.pch; sourceTree = "<group>"; };
+		8B139FF51ADC2F94009B4CAD /* confuse.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = confuse.sh; sourceTree = "<group>"; };
+		8B139FF71ADC2F9D009B4CAD /* func.list */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = func.list; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 		8B139FC11ADC2E92009B4CAD = {
 			isa = PBXGroup;
 			children = (
+				8B139FF71ADC2F9D009B4CAD /* func.list */,
+				8B139FF51ADC2F94009B4CAD /* confuse.sh */,
+				8B139FF41ADC2F1E009B4CAD /* confuse.pch */,
 				8B139FCC1ADC2E92009B4CAD /* confuse */,
 				8B139FE61ADC2E93009B4CAD /* confuseTests */,
 				8B139FCB1ADC2E92009B4CAD /* Products */,
@@ -85,6 +94,7 @@
 				8B139FD21ADC2E92009B4CAD /* AppDelegate.m */,
 				8B139FD41ADC2E92009B4CAD /* ViewController.h */,
 				8B139FD51ADC2E92009B4CAD /* ViewController.m */,
+				8B139FF31ADC2EED009B4CAD /* codeObfuscation.h */,
 				8B139FD71ADC2E92009B4CAD /* Main.storyboard */,
 				8B139FDA1ADC2E92009B4CAD /* Images.xcassets */,
 				8B139FDC1ADC2E92009B4CAD /* LaunchScreen.xib */,
@@ -129,6 +139,7 @@
 				8B139FC61ADC2E92009B4CAD /* Sources */,
 				8B139FC71ADC2E92009B4CAD /* Frameworks */,
 				8B139FC81ADC2E92009B4CAD /* Resources */,
+				8B139FF91ADC2FA6009B4CAD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -200,7 +211,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B139FD91ADC2E92009B4CAD /* Main.storyboard in Resources */,
+				8B139FF81ADC2F9D009B4CAD /* func.list in Resources */,
 				8B139FDE1ADC2E93009B4CAD /* LaunchScreen.xib in Resources */,
+				8B139FF61ADC2F94009B4CAD /* confuse.sh in Resources */,
 				8B139FDB1ADC2E92009B4CAD /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,6 +226,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8B139FF91ADC2FA6009B4CAD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PROJECT_DIR/confuse.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8B139FC61ADC2E92009B4CAD /* Sources */ = {
@@ -345,6 +374,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/confuse.pch";
 				INFOPLIST_FILE = confuse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -355,6 +386,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/confuse.pch";
 				INFOPLIST_FILE = confuse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

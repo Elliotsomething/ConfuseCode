@@ -24,4 +24,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)sample{
+    
+}
+
+-(void)seg1:(NSString *)string seg2:(NSUInteger)num{
+    
+    
+    
+}
+
 @end
